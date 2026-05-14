@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Ti ❤️</title>
+
+<style>
+body{
+    background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    font-family:Arial;
+    overflow:hidden;
+    margin:0;
+    position:relative;
+}
+
+/* GIRASOLES */
+.girasol{
+    position:absolute;
+    font-size:50px;
+    animation:flotar 6s linear infinite;
+    opacity:0.8;
+}
+
+@keyframes flotar{
+    0%{
+        transform:translateY(100vh) rotate(0deg);
+    }
+    100%{
+        transform:translateY(-120vh) rotate(360deg);
+    }
+}
+
+h1{
+    color:white;
+    text-align:center;
+    font-size:40px;
+    padding:20px;
+    z-index:2;
+}
+
+.botones{
+    position:relative;
+    width:100%;
+    height:250px;
+    z-index:2;
+}
+
+/* BOTÓN SÍ CENTRADO */
+#si{
+    background:#ff4d6d;
+    color:white;
+    padding:15px 30px;
+    border:none;
+    border-radius:20px;
+    font-size:20px;
+    cursor:pointer;
+
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+}
+
+/* BOTÓN NO */
+#no{
+    background:white;
+    color:black;
+    padding:15px 30px;
+    border:none;
+    border-radius:20px;
+    font-size:20px;
+    cursor:pointer;
+
+    position:absolute;
+    left:65%;
+    top:50%;
+}
+</style>
+</head>
+
+<body>
+
+<!-- GIRASOLES -->
+<div class="girasol" style="left:10%; animation-delay:0s;">🌻</div>
+<div class="girasol" style="left:25%; animation-delay:2s;">🌻</div>
+<div class="girasol" style="left:40%; animation-delay:4s;">🌻</div>
+<div class="girasol" style="left:55%; animation-delay:1s;">🌻</div>
+<div class="girasol" style="left:70%; animation-delay:3s;">🌻</div>
+<div class="girasol" style="left:85%; animation-delay:5s;">🌻</div>
+
+<h1>¿Quieres ser mi novia? ❤️</h1>
+
+<div class="botones">
+    <button id="si" onclick="acepto()">Sí 💖</button>
+    <button id="no">No 😢</button>
+</div>
+
+<script>
+const botonNo = document.getElementById("no");
+
+function moverBoton() {
+
+    const anchoVentana = window.innerWidth - botonNo.offsetWidth;
+    const altoVentana = window.innerHeight - botonNo.offsetHeight;
+
+    const nuevoX = Math.random() * anchoVentana;
+    const nuevoY = Math.random() * altoVentana;
+
+    botonNo.style.left = `${nuevoX}px`;
+    botonNo.style.top = `${nuevoY}px`;
+}
+
+botonNo.addEventListener("mouseover", moverBoton);
+
+botonNo.addEventListener("touchstart", function(e){
+    e.preventDefault();
+    moverBoton();
+});
+
+function acepto(){
+    document.body.innerHTML = `
+    <div style="
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+        height:100vh;
+        color:white;
+        text-align:center;
+        font-family:Arial;
+        background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+    ">
+        <h1>❤️ Sabía que dirías que sí ❤️</h1>
+        <h2>Ahora oficialmente eres mi novia ✨</h2>
+        <div style="font-size:60px; margin-top:20px;">🌻🌻🌻</div>
+    </div>
+    `;
+}
+</script>
+
+</body>
+</html>
